@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aula 02 - Atividade 01 - HTML5</title>
+	<meta charset="utf-8">
+</head>
+<style>
+        body{
+                margin: 1em;
+        }
+        #imagem{
+                display: none;
+        }
+        #html5vid{
+                display: block;
+        }
+</style>
+
+<body>
+        <div id="header">
+	        <h1>Olá, mundo!</h1>
+	        <p>Esta é uma página HTML 5.</p>	        
+	        <b id="negrito">Este é um exemplo em negrito.</b>
+	        <p><i>Este é um exemplo em itálico.</i></p>
+	        <p><a href="">E este é um link</a></p><br/>
+	        <button onclick="return teste()">Clique</button><br/>
+                <h2>Imagem:</h2>
+	        <img class="imagem" src="http://i.imgur.com/5YH01XZ.jpg" width="400px" /><br/>
+	        <h2>Audio</h2>
+	        <audio controls>
+		        <source src="https://www.w3schools.com/tags/horse.ogg" type="audio/ogg">
+	        </audio><br/>
+	</div>
+
+	<div id="video">
+	        <h2>HTML5 Video</h2>
+	        <img id="imagem" src="http://i.imgur.com/zM1ssSs.jpg" width="400px" /><br/>
+	        <video id="html5vid" width="400" controls>
+       	        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+	</video><br/>
+	</div>
+
+	<button name="changeImg" onclick="changeVideoSrc()">Clique</button><br/><br/>
+	<h2>Youtube:</h2>
+	<iframe width="420" height="315"
+	        src="https://www.youtube.com/embed/XGSy3_Czz8k">
+	</iframe><br/>
+
+	<script>
+		function teste(event){
+		        document.getElementsByTagName("B")[0].innerHTML = "e1"; 
+		}
+
+		function changeVideoSrc(){
+		        document.getElementById('html5vid').style.display = 'none';
+		        document.getElementById('imagem').style.display = 'block';
+		}
+	</script>
+</body>
+</html>
