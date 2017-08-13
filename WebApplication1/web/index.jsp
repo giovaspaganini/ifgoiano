@@ -45,7 +45,8 @@
                 <h1>O que é um projeto Web Java e como isso se relaciona com ides eclipse e java?</h1>
                 <h1>o que é .war</h1>
                 <h1>o que é e como implantar war no wildfly</h1>
-                <h1>como fazer um servlet que a cada requisição imprime o valor de um inteiro +1 e mostra prints?</h1>                
+                <h1>como fazer um servlet que a cada requisição imprime o valor de um inteiro +1 e mostra prints?</
+                h1>                
             </div>
         </div>
     </body>
