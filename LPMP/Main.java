@@ -1,27 +1,23 @@
-package rh2;
-
+package rh;
 public class Main {
     public static void main(String[] args) {
-    	    	
-    	Endereco primeiroEndereco = new Endereco("Rua 14 Numero 52", "Jardim América", "Morrinhos", "GO", "Quadra 19");
-    	Endereco segundoEndereco = new Endereco("Rua 45 Numero 99", "Jardim Goiás", "Morrinhos", "GO", "Quadra 29");
-    	Endereco terceiroEndereco = new Endereco("Rua 34 Numero 23", "Centro", "Morrinhos", "GO", "Quadra 19");
-    			
-    	Cargo cargo = new Cargo("Pedreiro", 300.50);
-    	
-    	Funcionario f = new Funcionario("Jorginho Augusto Fernandes ", 974.00, cargo, primeiroEndereco);
-    	
-    	f.getEnderecos().add(segundoEndereco);
-    	f.getEnderecos().add(terceiroEndereco);
-    	
-    	f.getDependentes().add(new Dependente("Larissa", "Esposa"));
-    	f.getDependentes().add(new Dependente("Bianca", "Filha"));
-    	
-    	System.out.println(f);
-    	
-    	
+        
+        /*Funcionario f = new Funcionario("Pedro", 
+                2500, 
+                new Dependente("Lucas", "Filho"), 
+                new Endereco("Rua Tal", "St Tal", "Mhs", "GO"), 
+                new Cargo("Gerente", 400));
+        
+        Dependente d = new Dependente("Joana", "Esposa");//instaciacao declarativa
+        
+        f.getDependentes().add(d);//passada por referencia
+        f.getDependentes().add(new Dependente("Lia", "Filha"));//instaciacao anonima
+        
+        f.getEndereco().add(new Endereco("Rua Fulano", "St Ciclano", "Gyn", "GO")); */       
+        
+        Venda v1 = new Venda(1, "s", 5, new Itens(1, new Produto("hue", 15)));
+        
        
-       
-    }
-    
+        System.out.println(v1);
+    }    
 }

@@ -1,30 +1,32 @@
-package rh2;
+package rh;
 import java.util.ArrayList;
-
-public class Funcionario {
+public class Funcionario {    
     private String nome;
-    private double salario;
-    private Cargo cargo;
-    
+    private double salario;    
     private ArrayList<Dependente> dependentes;
-    private ArrayList<Endereco> enderecos = new ArrayList<>();
+    private ArrayList<Endereco> endereco = new ArrayList<>();
+    private Cargo cargo;
 
-    public Funcionario(String nome, double salario, Cargo cargo, Dependente dependentes, Endereco enderecos) {
+    public Funcionario(String nome, 
+            double salario, 
+            Dependente dependente, 
+            Endereco endereco, 
+            Cargo cargo) {
+        
         this.nome = nome;
         this.salario = salario;
+        getDependentes().add(dependente);
+        this.endereco.add(endereco);
         this.cargo = cargo;
-        getDependentes().add(dependentes);
-        this.enderecos.add(enderecos);
     }
 
-    public Funcionario(String nome, double salario, Cargo cargo, Endereco enderecos) {
+    public Funcionario(String nome, double salario, ArrayList<Endereco> endereco, Cargo cargo) {
         this.nome = nome;
         this.salario = salario;
+        this.endereco = endereco;
         this.cargo = cargo;
-        this.enderecos.add(enderecos);
     }
-    
-    
+
     public String getNome() {
         return nome;
     }
@@ -41,6 +43,26 @@ public class Funcionario {
         this.salario = salario;
     }
 
+    public ArrayList<Dependente> getDependentes() {
+        if (dependentes==null){
+            dependentes = new ArrayList<>();                  
+        }
+
+        return dependentes;
+    }
+
+    private void setDependentes(ArrayList<Dependente> dependentes) {
+        this.dependentes = dependentes;
+    }
+
+    public ArrayList<Endereco> getEndereco() {
+        return endereco;
+    }
+
+    private void setEndereco(ArrayList<Endereco> endereco) {
+        this.endereco = endereco;
+    }
+
     public Cargo getCargo() {
         return cargo;
     }
@@ -48,76 +70,32 @@ public class Funcionario {
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
-
-    public ArrayList<Dependente> getDependentes() {
-        if(dependentes==null) {
-            dependentes = new ArrayList<>();
-        }
-        return dependentes;
-    }
-
-    public void setDependentes(ArrayList<Dependente> dependentes) {
-        this.dependentes = dependentes;
-    }
-
-    public ArrayList<Endereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(ArrayList<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }
     
     public double calculeSalario(){
-        return this.salario + cargo.getGratificacao();
+        return this.salario + this.cargo.getGratificacao();
     }
 
     @Override
     public String toString() {
-        String aux = "Funcionario: \n"+
-        		"\nNome :" + nome +
-        		"\nSalario : " + salario + 
-        		"\nCargo : " + cargo.getDescricao() +
-        		"\nGratificação : " + cargo.getGratificacao();
-
-        for (Endereco avatar:enderecos){
+        String aux;
+        
+        aux = "Funcionario{" + "nome=" + nome + ", salario=" + salario + ", cargo=" + cargo + "}";
+        
+        /**
+        for (int i=0; i<endereco.size(); i++){
+            aux += "\n" + endereco.get(i);
+        }
+        */
+        
+        for (Endereco avatar:endereco){
             aux = aux.concat("\n" + avatar);
         }
         
         for (Dependente avatar:dependentes){
             aux = aux.concat("\n" + avatar);
-        }
-        
+        }    
+                       
         return aux.concat("Salario Bruto=" + calculeSalario());
-    }      
-    
-    
-    /*
-    public String printFuncDep(ArrayList<Dependente> dependentes) {
-    	
-    	String text = "";
-    	
-    	for(int i = 0; i < dependentes.size(); i++){
-    		text += "\n    "+ (i+1) + " - " + dependentes.get(i);
-    		
-    	}
-    	
-    	return text;
-    	
     }
-    
-    public String printFuncEnd(ArrayList<Endereco> enderecos) {
-    	
-    	String text = "";
-    	
-    	for(int i = 0; i < enderecos.size(); i++){
-    		text += "\n\tEndereco "+ (i+1) + " : " + enderecos.get(i);
-    		
-    	}
-    	
-    	return text;
-    	
-    }*/
+
 }
-
-

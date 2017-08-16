@@ -1,20 +1,12 @@
-package rh2;
+package rh;
 public class Itens {
-    double quantidade;    
-    private String descricao;
+    private double quantidade;
     private Produto produto;
-    
-    public double calculeTotal(){
-        
-    }
 
-    public Itens() {
-        
-    }
-
-    public Itens(double quantidade) {
+    public Itens(double quantidade, Produto produto) {
         this.quantidade = quantidade;
-    }
+        this.produto = produto;
+    }   
 
     public double getQuantidade() {
         return quantidade;
@@ -24,8 +16,24 @@ public class Itens {
         this.quantidade = quantidade;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
+    public double calculeTotal(){
+        return this.quantidade * this.produto.getValorUnitario();
+    }
+
     @Override
     public String toString() {
-        return "Itens{" + "quantidade=" + quantidade + '}';
+        return "Itens:\n{" + "\nQuantidade:" + quantidade + ", \nProduto: " + produto + "\nValor Total: " + '}';
     }
+    
+    
+    
+        
 }

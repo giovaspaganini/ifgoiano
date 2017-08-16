@@ -1,5 +1,14 @@
-package rh2;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rh;
 
+/**
+ *
+ * @author L
+ */
 public class Cargo {
     private String descricao;
     private double gratificacao;
@@ -30,7 +39,6 @@ public class Cargo {
 
     @Override
     public String toString() {
-        return "Cargo{" + "descricao=" + descricao + ", gratificacao=" + gratificacao + '}';
+        return "Cargo{" + "Descricao=" + descricao + ", gratificacao=" + gratificacao + '}';
     }
-    
 }

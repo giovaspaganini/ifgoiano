@@ -1,5 +1,14 @@
-package rh2;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rh;
 
+/**
+ *
+ * @author L
+ */
 public class Dependente {
     private String nome;
     private String parentesco;
@@ -29,9 +38,7 @@ public class Dependente {
     }
 
     @Override
-    public String toString() { 
-    	return "Nome: " + this.getNome() + "\n\t" + "Parentesco: " +this.getParentesco() + "\n";
-    }   
-
-    
+    public String toString() {
+        return "Dependente{" + "nome=" + nome + ", parentesco=" + parentesco + '}';
+    }
 }

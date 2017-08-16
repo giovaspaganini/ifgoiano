@@ -1,12 +1,9 @@
-package rh2;
+package rh;
 public class Produto {
-    String descricao;
-    String valorUnitario;
+    private String descricao;
+    private double valorUnitario;
 
-    public Produto() {
-    }
-
-    public Produto(String descricao, String valorUnitario) {
+    public Produto(String descricao, double valorUnitario) {
         this.descricao = descricao;
         this.valorUnitario = valorUnitario;
     }
@@ -19,16 +16,19 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getValorUnitario() {
+    public double getValorUnitario() {
         return valorUnitario;
     }
 
-    public void setValorUnitario(String valorUnitario) {
+    public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
 
+   
+
     @Override
-    public String toString() {
-        return "Produto{" + "descricao=" + descricao + ", valorUnitario=" + valorUnitario + '}';
+    public String toString() {        
+        return "Produto: \n========================={" + "\nDescricao: " + descricao + ", \nValor unitario: " + valorUnitario + '}';               
     }
+    
 }
