@@ -32,8 +32,8 @@ public class PageHitCounter extends HttpServlet {
             "<body bgcolor = \"#f0f0f0\">\n" +
                "<h1 align = \"center\">" + title + "</h1>\n" +
                "<h2 align = \"center\">" + hitCount + "</h2>\n" +
-            "</body>
-         </html>"
+            "</body>"
+              + "</html>"
       );
    }
    
