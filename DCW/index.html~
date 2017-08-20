@@ -3,7 +3,9 @@
 <head>
 	<title>Verificar Idade</title>
 </head>
-<body>
+<body>	
+	<h1>Verificar idade</h1>
+
 	<script type="text/javascript" src="verificaidade.js"></script>
 </body>
 </html>
