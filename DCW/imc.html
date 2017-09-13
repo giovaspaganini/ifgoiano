@@ -1,18 +1,37 @@
 <html>
-        <head>
-                <title>IMC</title>
-                <meta charset='UTF-8'/>                
-        </head>
-        
-        <body>
-                <form name="imcForm" id="imcForm" action="#">
-                Altura:</br>
-                        <input type="text" name="altura" id="altura" /></br>
-                Peso:</br>
-                        <input type="text" name="peso" id="peso" /></br>
-                        <input type="submit" name="Enviar" value="Enviar" onclick="imc()" />
-                </form>
-                
-        <script type="text/javascript" src="imc.js"></script>
-        <body>
+    <head>
+	    <title>IMC</title>
+        <meta charset='UTF-8'/>
+
+        <style type="text/css">
+        	#formBox {        		        		
+        		font-family: Arial, Helvetica, sans-serif;        		
+        		padding: 5px;
+        		display: block;
+        	}
+
+        	.imcForm {
+        		display: block;        		
+        		padding: 5px;        		        		
+        	}
+        </style>                
+    </head>
+    
+    <body>
+    	<div id="formBox">
+	        <form name="imcForm" id="imcForm" action="#">
+	        	Nome:<br>
+	        	<input type="text" name="nome" id="nome"/><br>
+		        Altura:</br>
+	            <input type="text" name="altura" id="altura" /></br>
+		        Peso:</br>
+	            <input type="text" name="peso" id="peso" /></br>	            
+	            <input type="submit" name="criar" value="Inserir Novo" onclick="validaForm()" />
+	        </form>
+        </div>
+        <div id="destino">
+        	
+        </div>   
+        <script type="text/javascript" src="calculaimc.js"></script>
+    <body>
 </html>
