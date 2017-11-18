@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>IMC 2000</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>IMC Calculator 2000</h1>
+			</div>
+		</header>
+		<main class="container">
+			<section>
+				<h2>Adicionar novo</h2>
+				<form>
+					<fieldset>
+						<label for="nome">Nome:</label>
+						<input id="campo-nome" type="text" placeholder="digite seu nome" required>
+					</fieldset>
+					<fieldset class="campo-medio">
+						<label for="peso">Peso:</label>
+						<input id="campo-peso" type="text" placeholder="digite seu peso" required>
+					</fieldset>
+					<fieldset class="campo-medio">
+						<label for="altura">Altura:</label>
+						<input id="campo-altura" type="text" placeholder="digite sua altura" required>
+					</fieldset>
+					<button id="adicionar-pessoa" class="botao bto-principal">Adicionar</button>
+				</form>
+			</section>
+						<section>
+				<h2>IMCs</h2>
+				<table>
+					<tr>
+						<th>Nome</th>
+						<th>Peso(kg)</th>
+						<th>Altura(m)</th>
+						<th>IMC</th>
+						<th>Status</th>
+					</tr>					
+				</table>
+				<button id="calcula-imcs" class="botao ">Calcular Imcs</button>
+			</section>
+		</main>
+		<footer>
+			<div class="container">
+				<h1>2017 &copy Giovani Paganini </h1>
+			</div>
+		</footer>
+		<script src="js/percorre.js"></script>
+		<script src="js/pessoa.js"></script>
+		<script src="js/calculaImc.js"></script>		
+		<script src="js/addImc.js"></script>
+	</body>
+</html>
