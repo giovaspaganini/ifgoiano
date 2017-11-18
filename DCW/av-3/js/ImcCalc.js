@@ -55,3 +55,14 @@ var pesoRegex = function(peso) {
         return false;
     }
 }
+
+var alturaRegex = function(altura) {
+    var regex = /[0-9]/
+
+    if (regex.test(altura)) {
+        return true;
+    } else {
+        alert("Digite a altura corretamente!");
+        return false;
+    }
+}
