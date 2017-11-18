@@ -45,3 +45,13 @@ var nomeRegex = function(nome) {
     }
 }
 
+var pesoRegex = function(peso) {
+    var regex = /[0-9]/
+
+    if (regex.test(peso)) {
+        return true;
+    } else {
+        alert("Peso só pode conter números");
+        return false;
+    }
+}
