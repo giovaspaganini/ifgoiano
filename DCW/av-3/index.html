@@ -27,11 +27,13 @@
 	<script>
 		$( function() {
 			var dialog, form,
-						
-			name = $( "#name" ),
-			email = $( "#email" ),
-			password = $( "#password" ),
-			allFields = $( [] ).add( name ).add( email ).add( password ),
+
+			name = $( "#nome" ),
+			peso = $( "#peso" ),
+			altura = $( "#altura" ),
+			imc = $( "#imc" ),
+			imcResult = $( "#imcResult" ),
+			allFields = $( [] ).add( nome ).add( peso ).add( altura ).add( imc ).add( imcResult ),
 			tips = $( ".validateTips" );
 
 			function updateTips( t ) {
@@ -43,16 +45,14 @@
 				}, 500 );
 			}
 
-			function checkLength( o, n, min, max ) {
-				if ( o.val().length > max || o.val().length < min ) {
-					o.addClass( "ui-state-error" );
-					updateTips( "Length of " + n + " must be between " +
-						min + " and " + max + "." );
-					return false;
-				} else {
-					return true;
-				}
+			function imcCalc() {
+				imc = peso.val() / (altura.val() * altura.val());
+				return imc;
 			}
+
+			function resultImc() {
+
+			}			
 
 			function checkRegexp( o, regexp, n ) {
 				if ( !( regexp.test( o.val() ) ) ) {
