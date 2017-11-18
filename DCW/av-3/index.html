@@ -51,7 +51,28 @@
 			}
 
 			function resultImc() {
-
+				if (imc < 17) {
+					imcResult =  "Você está muito abaixo do peso com esse índice";
+				}
+				if (imc >=17 && imc <18.5) {
+					imcResult =  "Você está abaixo do peso com esse índice";
+				}
+				else if (imc >= 18.5 && imc < 24.9) {
+					imcResult =  "Você está com o peso normal com esse índice";
+				}
+				else if (imc >= 25 && imc < 29.9){
+					imcResult =  "Você está acima do peso com esse índice";
+				}
+				else if (imc >= 30 && imc < 34.9) {
+					imcResult =  "Você está com Obesidade I com esse índice";
+				}
+				else if (imc >= 35 && imc < 39.9) {
+					imcResult =  "Você está com obesidade II (severa) com esse índice";
+				}
+				else if (imc > 40) {
+					imcResult =  "Você está com Obesidade III (mórbida) com esse índice";
+				}
+				return imcResult;
 			}			
 
 			function checkRegexp( o, regexp, n ) {
