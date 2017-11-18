@@ -33,3 +33,15 @@ function addPessoa(){
         alert(i.toString());
     }
 }
+
+var nomeRegex = function(nome) {
+    var regex = /[a-zA-Z]/
+
+    if (regex.test(nome)) {
+        return true;
+    } else {
+        alert("Nome só pode conter letras!");
+        return false;
+    }
+}
+
