@@ -11,6 +11,7 @@
 
 	<script src="js/jquery-3.2.1.js"></script>
 	<script src="js/jquery-ui/jquery-ui.js"></script>
+	<script src="js/ImcCalc.js"></script>
 
 	<style>
 		label, input { display:block; }
@@ -26,15 +27,14 @@
 
 	<script>
 		$( function() {
-			var dialog, form,
-
-			name = $( "#nome" ),
-			peso = $( "#peso" ),
-			altura = $( "#altura" ),
-			imc = $( "#imc" ),
-			imcResult = $( "#imcResult" ),
-			allFields = $( [] ).add( nome ).add( peso ).add( altura ).add( imc ).add( imcResult ),
-			tips = $( ".validateTips" );
+            var dialog, form,            
+            nome = $( "#nome" ),
+            peso = $( "#peso" ),
+            altura = $( "#altura" ),
+            imc = $("#imc"),
+            imcResult = $("#imcResult");
+            allFields = $( [] ).add( nome ).add( peso ).add( altura ).add( imc ).add( imcResult ),
+            tips = $( ".validateTips" );
 
 			function updateTips( t ) {
 				tips
@@ -76,18 +76,18 @@
 			}			
 
 			function addUser() {
-				var valid = true;
-				allFields.removeClass( "ui-state-error" );
+                var valid = true;
+                allFields.removeClass( "ui-state-error" );
 
-				if (nome.val() == "" || peso.val() == "" || altura.val() == ""){
-					$( function() {
-						$( "#dialog" ).dialog();
+                if (nome.val() == "" || peso.val() == "" || altura.val() == ""){
+                    $( function() {
+                        $( "#dialog" ).dialog();
 
-					} );
-					valid = false;
-				}
+                    } );
+                    valid = false;
+                }
 
-				var regex = /^[A-Z][a-zA-Z]+$/;
+				var regex = /^[a-záàâãéèêíïóôõöúçñ A-Z ]+$/;
 
 				if (regex.test(nome.val())) {
 					valid = true;
@@ -141,7 +141,6 @@
 </script>
 </head>
 <body>
-
 	<div id="dialog-form" title="Calcular novo IMC">
 		<p class="validateTips">*Todos os campos são obrigatórios</p>
 
@@ -159,7 +158,6 @@
 			</fieldset>
 		</form>
 	</div>
-
 
 	<div id="users-contain" class="ui-widget">
 		<h1>IMCs:</h1>
