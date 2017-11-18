@@ -27,8 +27,8 @@ function addPessoa(){
     }else if(se == 2){
         for (var a = 0; a <= aux; a++ ) {
             i[a] = ("Nome: " + nome[a] +
-             "\n IMC: " + ImcCalc(peso[a], altura[a]).toFixed(2) +
-              "\n Nível: " + ImcResult(ImcCalc(peso[a], altura[a]))+ "\n\n");
+               "\n IMC: " + ImcCalc(peso[a], altura[a]).toFixed(2) +
+               "\n Nível: " + ImcResult(ImcCalc(peso[a], altura[a]))+ "\n\n");
         }
         alert(i.toString());
     }
