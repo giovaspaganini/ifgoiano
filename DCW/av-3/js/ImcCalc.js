@@ -1,103 +1,120 @@
-var nome = new Array();
-var peso = new Array();
-var altura = new Array();
-var imc = new Array();
-var imcResult = new Array();
-var i = new Array();
-var aux = 0;
+$( function() {
+    var dialog, form,            
+    nome = $("#nome"),
+    peso = $("#peso"),
+    altura = $("#altura"),
+    imc = $("#imc"),
+    imcResult = $("#imcResult");
+    allFields = $( [] ).add( nome ).add( peso ).add( altura ).add( imc ).add( imcResult ),
+    tips = $(".validateTips");
 
-function addPessoa(){
-    do{
-        nome[aux] = prompt("Seu nome: ");
-    } while (nome[aux] == "" || nome[aux] == null || ValidaNome(nome[aux]) == false )
-    
-    do {
-        peso[aux] = prompt("Seu peso: ");
-    } while (peso[aux] == "" || peso[aux] == null || ValidaPeso(peso[aux]) == false)
-    
-    do {
-        altura[aux] = prompt("Sua altura:");
-    } while (altura[aux] == "" || altura[aux] == null || ValidaAltura(altura[aux]) == false)
-
-    var se = prompt("Digite: 1 - Novo | 2 - Calcular IMC");
-
-    if (se == 1){
-        AddPessoa();
-
-    }else if(se == 2){
-        for (var a = 0; a <= aux; a++ ) {
-            i[a] = ("Nome: " + nome[a] +
-               "\n IMC: " + ImcCalc(peso[a], altura[a]).toFixed(2) +
-               "\n Nível: " + ImcResult(ImcCalc(peso[a], altura[a]))+ "\n\n");
+    $.ajax({
+        url: "json/imcData.json",
+        type: "GET",
+        crossDomain: true,
+        dataType: "json",
+        success: function (response) {                  
+            window.resultadosIMC = response;
+        },
+        error: function (xhr, status) {
+            alert("Erro ao carregar o arquivo");
+            console.log("xhr, status");
         }
-        alert(i.toString());
-    }
-}
+    });
 
-var nomeRegex = function(nome) {
-    var regex = /[a-zA-Z]/
+    function calcularImcDoArquivo(valor) {
+        for (let i = 0; i < window.resultadosIMC.length; i++) {
+            if (valor >= window.resultadosIMC[i].minimo && valor <= window.resultadosIMC[i].maximo) {
+                return window.resultadosIMC[i];
+            }                   
+        }
 
-    if (regex.test(nome)) {
-        return true;
-    } else {
-        alert("Nome só pode conter letras!");
-        return false;
+        return {erro: "Nao foi encontrado nenhum valor compativel"};
     }
-}
 
-var pesoRegex = function(peso) {
-    var regex = /[0-9]/
+    function updateTips( t ) {
+        tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+        setTimeout(function() {
+            tips.removeClass( "ui-state-highlight", 1500 );
+        }, 500 );
+    }
 
-    if (regex.test(peso)) {
-        return true;
-    } else {
-        alert("Peso só pode conter números");
-        return false;
+    function imcCalc() {
+        imc = peso.val() / (altura.val() * altura.val());               
+        return imc;
     }
-}
 
-var alturaRegex = function(altura) {
-    var regex = /[0-9]/
+    function resultImc() {              
+        let resultado = calcularImcDoArquivo(imc);
 
-    if (regex.test(altura)) {
-        return true;
-    } else {
-        alert("Digite a altura corretamente!");
-        return false;
-    }
-}
+        if(resultado.erro){
+            return resultado.erro;
+        }
+        
+        return resultado.descricao;             
+    }           
 
-var ImcCalc = function(peso, altura){
-    imc[aux] = peso / (altura * altura);
-    return imc[aux];
-}
+    function addUser() {
+        var valid = true;
+        allFields.removeClass( "ui-state-error" );
 
-function ResultImc() {
-    if (imc < 17) {
-        imcResult =  "Você está muito abaixo do peso com esse índice";
-    }
-    if (imc >=17 && imc <18.5) {
-        imcResult =  "Você está abaixo do peso com esse índice";
-    }
-    else if (imc >= 18.5 && imc < 24.9) {
-        imcResult =  "Você está com o peso normal com esse índice";
-    }
-    else if (imc >= 25 && imc < 29.9){
-        imcResult =  "Você está acima do peso com esse índice";
-    }
-    else if (imc >= 30 && imc < 34.9) {
-        imcResult =  "Você está com Obesidade I com esse índice";
-    }
-    else if (imc >= 35 && imc < 39.9) {
-        imcResult =  "Você está com obesidade II (severa) com esse índice";
-    }
-    else if (imc > 40) {
-        imcResult =  "Você está com Obesidade III (mórbida) com esse índice";
-    }
-    return imcResult;
-}
+        if (nome.val() == "" || peso.val() == "" || altura.val() == ""){
+            $( function() {
+                $( "#dialog" ).dialog();
 
-var AddPessoa = function () {
-    aux++;
-    addPessoa();
-}
+            } );
+            valid = false;
+        }
+
+        var regex = /^[a-záàâãéèêíïóôõöúçñ A-Z ]+$/;
+
+        if (regex.test(nome.val())) {
+            valid = true;
+        } else {
+            $( function() {
+                $( "#dialogNome" ).dialog();
+            } );
+            valid =  false;
+        }
+
+        if ( valid ) {
+            $( "#users tbody" ).append( "<tr>" +
+                "<td>" + nome.val() + "</td>" +
+                "<td>" + peso.val() + "</td>" +
+                "<td>" + altura.val() + "</td>" +
+                "<td>" + imcCalc().toFixed(2) + "</td>" +
+                "<td>" + resultImc() + "</td>" +
+                "</tr>" );
+            dialog.dialog( "close" );
+        }
+        return valid;
+    }
+
+    dialog = $( "#dialog-form" ).dialog({
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Adicionar Pessoa": addUser,
+            Cancelar: function() {
+                dialog.dialog( "close" );
+            }
+        },
+        close: function() {
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+        }
+    });
+
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        addUser();
+    });
+
+    $( "#create-user" ).button().on( "click", function() {
+        dialog.dialog( "open" );
+    });
+} );

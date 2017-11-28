@@ -1,0 +1,57 @@
+[ 
+	{
+		"nome": "Muito abaixo",
+		"descricao": "Você está muito abaixo do peso com esse índice",
+		"minimo": 0,
+		"maximo": 17.0
+
+	},
+
+	{
+		"nome": "Abaixo",
+		"descricao": "Você está abaixo do peso com esse índice",
+		"minimo": 17.1,
+		"maximo": 18.5
+
+	},
+
+	{
+		"nome": "Normal",
+		"descricao": "Você está com o peso normal com esse índice",
+		"minimo": 18.6,
+		"maximo": 24.9
+
+	},
+
+	{
+		"nome": "Acima",
+		"descricao": "Você está acima do peso com esse índice",
+		"minimo": 25.0,
+		"maximo": 29.9
+
+	},
+
+	{
+		"nome": "Obesidade I",
+		"descricao": "Você está com Obesidade I com esse índice",
+		"minimo": 30.0,
+		"maximo": 34.9
+
+	},
+
+	{
+		"nome": "Obesidade II",
+		"descricao": "Você está com obesidade II (severa) com esse índice",
+		"minimo": 35.0,
+		"maximo": 39.9
+
+	},
+
+	{
+		"nome": "Obesidade III",
+		"descricao": "Você está com obesidade III (mórbida) com esse índice",
+		"minimo": 40.0,
+		"maximo": 100.0
+
+	}
+]
