@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercício 10: animações jquery</title>
+	<meta charset="utf-8"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$(".hide").click(function(){
+				$(this).hide();
+			});
+		});
+
+		$(document).ready(function(){
+		    $("#animar").click(function(){
+		        $(".animate").animate({left: '250px'});
+		    });
+		});
+
+
+		$(document).ready(function(){
+			$("#tog").click(function(){
+				$(".toggle").toggle();
+			});
+		});
+
+		$(document).ready(function(){
+			$("#fade").click(function(){				
+				$(".esmaecer").fadeToggle("slow");
+			});
+		});
+
+		$(document).ready(function(){
+			$("#slide").click(function(){
+				$("#drop").slideToggle("slow");
+			});
+		});
+
+	</script>
+
+	<style>
+		#slide, #drop {
+			padding: 5px;
+			text-align: center;
+			background-color: #000;
+			border: solid 1px #fff;
+			color: #fff;
+		}
+
+		#drop {
+			padding: 50px;
+			display: none;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div>
+		<p class="hide">Clique para esconder!</p>
+	</div>
+	<br>
+
+	<div>
+		<button id="animar">Animar</button>
+		<p class="animate" style="background:grey;height:100px;width:100px;position:relative;"></p>
+	</div>	
+	<br>
+
+	<div>
+		<button id="tog">Alternar</button>
+		<p class="toggle">Toggle</p>
+	</div>
+	<br>
+
+	<div id="fade">
+		<button id="fade">Esmaecer</button>
+		<p class="esmaecer" style="width:100px;height:100px;background-color:black;"></p>
+	</div>
+	<br>
+
+	<p id="slide">Clique para deslizar o painel</p>
+	<p id="drop">Hayoooooooooo Silver!</p>	
+</body>
+</html>
